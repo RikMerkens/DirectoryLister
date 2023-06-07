@@ -24,3 +24,5 @@ RUN a2enmod rewrite
 
 COPY .docker/apache2/config/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY .docker/php/config/php.ini /usr/local/etc/php/php.ini
+COPY app /var/www/html/app
+COPY index.php /var/www/html
