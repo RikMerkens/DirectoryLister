@@ -3,10 +3,10 @@ name: Docker Build and Push for ARM
 on:
   push:
     branches:
-      - main  # change to your default branch name
+      - master  # change to your default branch name
   pull_request:
     branches:
-      - main  # change to your default branch name
+      - master  # change to your default branch name
 
 jobs:
   docker:
