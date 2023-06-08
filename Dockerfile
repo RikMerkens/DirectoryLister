@@ -26,5 +26,12 @@ RUN a2enmod rewrite
 COPY .docker/apache2/config/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY .docker/php/config/php.ini /usr/local/etc/php/php.ini
 
-RUN wget https://github.com/DirectoryLister/DirectoryLister/releases/download/${version}/DirectoryLister-${version}.tar.gz -O - | tar -xz && chown -R 1001:1001 /var/www/html \ 
-&& rm LICENSE && rm *wget-log* && rm directory-lister.svg 
+RUN apt update && apt install -y \
+  libzip-dev \
+  wget \
+  && rm -rf /var/lib/apt/lists/* \
+  && pecl install zip \
+  && docker-php-ext-enable zip \
+  && wget https://github.com/DirectoryLister/DirectoryLister/releases/download/${version}/DirectoryLister-${version}.tar.gz -O - | tar -xz \
+  && chown -R 33:33 /var/www/html \
+  && rm /var/www/html/LICENSE && rm /var/www/html/*wget-log* && rm /var/www/html/directory-lister.svg 
