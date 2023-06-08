@@ -1,13 +1,10 @@
 name: Docker Build and Push for ARM
 
 on:
+  schedule:
+  - cron: "0 4 * * 1"
   workflow_dispatch:
-  push:
-    branches:
-      - master  # change to your default branch name
-  pull_request:
-    branches:
-      - master  # change to your default branch name
+  
 
 jobs:
   docker:
