@@ -4,6 +4,7 @@ LABEL maintainer="Chris Kankiewicz <Chris@ChrisKankiewicz.com>"
 ENV HOME="/tmp"
 ENV COMPOSER_HOME="/tmp"
 ENV XDG_CONFIG_HOME="/tmp/.config"
+ENV VERSION=3.12.3
 
 COPY --from=composer:2.3 /usr/bin/composer /usr/bin/composer
 COPY --from=node:18.4 /usr/local/bin/node /usr/local/bin/node
@@ -24,5 +25,6 @@ RUN a2enmod rewrite
 
 COPY .docker/apache2/config/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY .docker/php/config/php.ini /usr/local/etc/php/php.ini
-COPY app /var/www/html/app
-COPY index.php /var/www/html
+
+RUN wget https://github.com/DirectoryLister/DirectoryLister/releases/download/${version}/DirectoryLister-${version}.tar.gz -O - | tar -xz && chown -R 1001:1001 /var/www/html \ 
+&& rm LICENSE && rm *wget-log* && rm directory-lister.svg 
