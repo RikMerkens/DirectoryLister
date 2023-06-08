@@ -1,6 +1,7 @@
 name: Docker Build and Push for ARM
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master  # change to your default branch name
