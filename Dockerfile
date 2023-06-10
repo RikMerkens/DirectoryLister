@@ -34,3 +34,4 @@ RUN wget https://github.com/DirectoryLister/DirectoryLister/releases/download/${
 RUN chown -R 33:33 /var/www/html
 RUN rm /var/www/html/LICENSE
 RUN rm /var/www/html/directory-lister.svg
+RUN rm /var/www/html/README.md
