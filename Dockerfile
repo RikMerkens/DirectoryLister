@@ -32,4 +32,5 @@ RUN pecl install zip
 RUN docker-php-ext-enable zip
 RUN wget https://github.com/DirectoryLister/DirectoryLister/releases/download/${VERSION}/DirectoryLister-${VERSION}.tar.gz -O - | tar -xz
 RUN chown -R 33:33 /var/www/html
-#RUN rm /var/www/html/LICENSE && rm /var/www/html/*wget-log* && rm /var/www/html/directory-lister.svg
+RUN rm /var/www/html/LICENSE
+RUN rm /var/www/html/directory-lister.svg
