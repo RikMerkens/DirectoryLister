@@ -17,9 +17,21 @@ RUN apt-get update && apt-get install --assume-yes --no-install-recommends \
     libmemcached-dev libzip-dev tar zip \
     && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install opcache zip \
-    && pecl install apcu memcached redis xdebug \
-    && docker-php-ext-enable apcu memcached redis xdebug
+# RUN docker-php-ext-install opcache zip \
+#     && pecl install apcu memcached redis xdebug \
+#     && docker-php-ext-enable apcu memcached redis xdebug
+
+
+RUN docker-php-ext-install opcache zip
+RUN pecl install apcu
+RUN pecl install memcached
+RUN pecl install redis
+RUN pecl install xdebug
+RUN docker-php-ext-enable apcu
+RUN docker-php-ext-enable memcached
+RUN docker-php-ext-enable redis
+RUN docker-php-ext-enable xdebug
+
 
 RUN a2enmod rewrite
 
