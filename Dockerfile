@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:apache-bullseye
 LABEL maintainer="Chris Kankiewicz <Chris@ChrisKankiewicz.com>"
 
 ENV HOME="/tmp"
